@@ -11,8 +11,8 @@ def main():
 
         if command == "exit 0":
             break
-        elif command[:4] == "echo":
-            print(command[4:])
+        elif command[:5] == "echo ":
+            print(command[5:])
         else:
             print(f"{command}: command not found")
 
