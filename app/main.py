@@ -3,7 +3,7 @@ import sys
 
 def main():
     # Uncomment this block to pass the first stage
-    valid = ["exit", "echo", "type", "ls"]
+    valid = ["exit", "echo", "type", "ls", "cat"]
     path = ""
 
     args = sys.argv
