@@ -35,7 +35,9 @@ def main():
                 if cmd_path:
                     sys.stdout.write(f"{word} is {cmd_path}" + "\n")
                 else:
-                    sys.stdout.write(f"{word} is a shell builtin" + "\n")
+                    sys.stdout.write(f"{word}: not found" + "\n")
+            elif word in valid:
+                sys.stdout.write(f"{word} is a shell builtin" + "\n")
             else:
                 sys.stdout.write(f"{word}: not found" + "\n")
 
