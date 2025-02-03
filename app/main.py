@@ -5,10 +5,10 @@ import os
 def main():
     # Uncomment this block to pass the first stage
     valid = ["exit", "echo", "type", "ls", "cat"]
-    path = os.environ.get("PATH")
+    PATH = os.environ.get("PATH")
 
-    idx = path.find(":")
-    dir_path = path[idx + 1 :] + "/"
+    # idx = path.find(":")
+    # dir_path = path[idx + 1 :] + "/"
 
     while True:
         sys.stdout.write("$ ")
@@ -23,15 +23,20 @@ def main():
             sys.stdout.write(command[5:] + "\n")
 
         elif command[:5] == "type ":
-            words = command[5:].split()
-            if words[0] in valid:
-                if len(path) > 0:
-                    dir_path = dir_path + words[0]
-                    sys.stdout.write(f"{words[0]} is {dir_path}" + "\n")
+            word = command[5:].split()[0]
+
+            paths = PATH.split(":")
+            for path in paths:
+                if os.path.isfile(f"{path}/{word}"):
+                    cmd_path = f"{path}/{word}"
+
+            if word in valid:
+                if cmd_path:
+                    sys.stdout.write(f"{word} is {cmd_path}" + "\n")
                 else:
-                    sys.stdout.write(f"{command[5:]} is a shell builtin" + "\n")
+                    sys.stdout.write(f"{word} is a shell builtin" + "\n")
             else:
-                sys.stdout.write(f"{command[5:]}: not found" + "\n")
+                sys.stdout.write(f"{word}: not found" + "\n")
 
         else:
             sys.stdout.write(f"{command}: command not found" + "\n")
