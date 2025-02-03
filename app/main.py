@@ -1,40 +1,42 @@
 import sys
+import os
 
 
 def main():
     # Uncomment this block to pass the first stage
     valid = ["exit", "echo", "type", "ls", "cat"]
-    path = ""
+    path = os.environ.get["PATH"]
 
-    args = sys.argv
-
-    for arg in args:
-        if arg[:5] == "PATH=":
-            idx = arg.find(":")
-            path = arg[idx + 1 :]
+    idx = path.find(":")
+    dir_path = path[idx + 1 :] + "/"
 
     while True:
         sys.stdout.write("$ ")
-
+        sys.stdout.flush()
         # Wait for user input
         command = input()
 
         if command == "exit 0":
             break
-        elif command[:5] == "echo ":
-            print(command[5:])
+
+        if command[:5] == "echo ":
+            sys.stdout.write(command[5:])
+
         elif command[:5] == "type ":
             words = command[5:].split()
             if words[0] in valid:
                 if len(path) > 0:
-                    dirPath = path + "/" + words[0]
-                    print(f"{words[0]} is {dirPath}")
+                    dir_path = dir_path + words[0]
+                    sys.stdout.write(f"{words[0]} is {dir_path}")
                 else:
-                    print(f"{command[5:]} is a shell builtin")
+                    sys.stdout.write(f"{command[5:]} is a shell builtin")
             else:
-                print(f"{command[5:]}: not found")
+                sys.stdout.write(f"{command[5:]}: not found")
+
         else:
-            print(f"{command}: command not found")
+            sys.stdout.write(f"{command}: command not found")
+
+        sys.stdout.flush()
 
 
 if __name__ == "__main__":
