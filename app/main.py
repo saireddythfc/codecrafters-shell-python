@@ -4,7 +4,7 @@ import os
 
 def main():
     # Uncomment this block to pass the first stage
-    valid = ["exit", "echo", "type", "ls", "cat"]
+    valid = ["exit", "echo", "type", "ls", "cat", "cp"]
     PATH = os.environ.get("PATH")
 
     # idx = path.find(":")
