@@ -4,7 +4,8 @@ import os
 
 def main():
     # Uncomment this block to pass the first stage
-    valid = ["exit", "echo", "type", "ls", "cat", "cp", "mkdir", "my_exe"]
+    valid = ["exit", "echo", "type"]
+    type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
     # idx = path.find(":")
@@ -30,7 +31,7 @@ def main():
                 if os.path.isfile(f"{path}/{word}"):
                     cmd_path = f"{path}/{word}"
 
-            if word in valid:
+            if word in type_valid:
                 if cmd_path:
                     sys.stdout.write(f"{word} is {cmd_path}" + "\n")
                 else:
