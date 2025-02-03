@@ -11,8 +11,10 @@ def main():
 
         if command == "exit 0":
             break
-
-        print(f"{command}: command not found")
+        elif command[:4] == "echo":
+            print(command[4:])
+        else:
+            print(f"{command}: command not found")
 
 
 if __name__ == "__main__":
