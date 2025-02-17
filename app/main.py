@@ -44,11 +44,13 @@ def main():
         else:
             # sys.stdout.write(f"{command}: command not found" + "\n")
             if os.path.isfile(command.split()[0]):
-                # args = command.split()
-                # sys.stdout.write(f"Program was passed {len(command)} args (including program name).")
-                # sys.stdout.write(f"Arg #0 (program name): {args[0]}")
-                # for i in range(len(args[1:])):
-                #     sys.stdout.write(f"Arg #{i} : {args[i]}")
+                args = command.split()
+                sys.stdout.write(
+                    f"Program was passed {len(command)} args (including program name)."
+                )
+                sys.stdout.write(f"Arg #0 (program name): {args[0]}")
+                for i in range(len(args[1:])):
+                    sys.stdout.write(f"Arg #{i} : {args[i]}")
 
                 os.system(command)
             else:
