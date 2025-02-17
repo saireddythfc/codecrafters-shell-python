@@ -50,6 +50,7 @@ def main():
                 args = command.split()
                 sys.stdout.write(
                     f"Program was passed {len(args)} args (including program name)."
+                    + "\n"
                 )
                 # sys.stdout.write(f"Arg #0 (program name): {args[0]}")
                 # for i in range(len(args[1:])):
