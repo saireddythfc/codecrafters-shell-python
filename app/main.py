@@ -59,6 +59,7 @@ def main():
 
             try:
                 os.chdir(" ".join(cmds[1:]))
+                working_dir = cmds[1:]
             except FileNotFoundError:
                 working_dir = os.getcwd()
                 sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
