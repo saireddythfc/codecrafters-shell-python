@@ -19,6 +19,7 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
+        cmds = command.split()
 
         if command == "exit 0":
             break
@@ -44,7 +45,7 @@ def main():
             else:
                 sys.stdout.write(f"{word}: not found" + "\n")
 
-        elif command[:4] == "pwd ":
+        elif cmds[0] == "pwd":
             sys.stdout.write(f"{os.getcwd()}")
 
         else:
