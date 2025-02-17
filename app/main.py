@@ -1,6 +1,7 @@
 import sys
 import os
 import shutil
+import random
 
 
 def main():
@@ -55,6 +56,8 @@ def main():
                 sys.stdout.write(f"Arg #0 (program name): {args[0]}" + "\n")
                 for i in range(len(args) - 1):
                     sys.stdout.write(f"Arg #{i+1}: {args[i+1]}" + "\n")
+                random_number = random.randint(10**9, 10**10 - 1)
+                sys.stdout.write(f"Program Signature: {random_number}" + "\n")
             else:
                 sys.stdout.write(f"{command}: command not found")
 
