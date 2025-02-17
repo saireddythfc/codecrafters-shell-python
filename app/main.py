@@ -13,7 +13,7 @@ def main():
 
     while True:
 
-        PATH = os.environ.get("PATH")
+        # PATH = os.environ.get("PATH")
         sys.stdout.write("$ ")
         sys.stdout.flush()
 
@@ -74,7 +74,7 @@ def main():
             else:
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
-        PATH = ""
+        # PATH = ""
         sys.stdout.flush()
 
 
