@@ -19,6 +19,8 @@ def main():
         command = input()
         cmds = command.split()
 
+        working_dir = ""
+
         if command == "exit 0":
             break
 
@@ -47,10 +49,11 @@ def main():
                 sys.stdout.write(f"{word}: not found" + "\n")
 
         elif cmds[0] == "pwd":
-            sys.stdout.write(f"{os.getcwd()}" + "\n")
+            sys.stdout.write(f"{working_dir}" + "\n")
 
         elif cmds[0] == "cd":
             if os.path.exists(cmds[1]):
+                working_dir = cmds[1]
                 continue
             else:
                 sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
