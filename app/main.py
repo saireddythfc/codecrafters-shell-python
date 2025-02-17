@@ -7,6 +7,7 @@ def main():
 
     valid = ["exit", "echo", "type", "pwd", "cd"]
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
+    PATH = os.environ.get("PATH")
 
     working_dir = os.getcwd()
 
@@ -34,6 +35,7 @@ def main():
             for path in paths:
                 if os.path.exists(f"{path}/{word}"):
                     cmd_path = f"{path}/{word}"
+                    break
 
             if word in type_valid:
                 if cmd_path:
