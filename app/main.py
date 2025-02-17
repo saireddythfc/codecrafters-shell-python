@@ -53,8 +53,8 @@ def main():
                     + "\n"
                 )
                 sys.stdout.write(f"Arg #0 (program name): {args[0]}" + "\n")
-                for i in range(len(args[1:])):
-                    sys.stdout.write(f"Arg #{i} : {args[i]}" + "\n")
+                for i in range(len(args) - 1):
+                    sys.stdout.write(f"Arg #{i+1} : {args[i+1]}" + "\n")
             else:
                 sys.stdout.write(f"{command}: command not found")
 
