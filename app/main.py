@@ -6,7 +6,7 @@ import random
 
 def main():
     # Uncomment this block to pass the first stage
-    valid = ["exit", "echo", "type"]
+    valid = ["exit", "echo", "type", "pwd"]
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
@@ -43,6 +43,9 @@ def main():
                 sys.stdout.write(f"{word} is a shell builtin" + "\n")
             else:
                 sys.stdout.write(f"{word}: not found" + "\n")
+
+        elif command[:4] == "pwd ":
+            sys.stdout.write(f"{os.getcwd()}")
 
         else:
             PATH = os.environ.get("PATH")
