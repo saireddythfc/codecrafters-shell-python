@@ -43,6 +43,10 @@ def main():
 
         else:
             sys.stdout.write(f"{command}: command not found" + "\n")
+            if os.path.isfile(command.split(" ")[0]):
+                os.system(command)
+            else:
+                sys.stdout.write(f"{command}: command not found")
 
         sys.stdout.flush()
 
