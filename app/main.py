@@ -1,7 +1,6 @@
 import sys
 import os
 import shutil
-import time
 
 
 def main():
@@ -11,9 +10,11 @@ def main():
     PATH = os.environ.get("PATH")
 
     while True:
+
         PATH = os.environ.get("PATH")
         sys.stdout.write("$ ")
         sys.stdout.flush()
+
         # Wait for user input
         command = input()
         cmds = command.split()
@@ -21,14 +22,15 @@ def main():
         if command == "exit 0":
             break
 
-        if command[:5] == "echo ":
+        if cmds[0] == "echo ":
             sys.stdout.write(command[5:] + "\n")
 
-        elif command[:5] == "type ":
+        elif cmds[0] == "type ":
             PATH = os.environ.get("PATH")
             word = command[5:].split()[0]
 
             paths = PATH.split(":")
+            cmd_path = None
             for path in paths:
                 if os.path.isfile(f"{path}/{word}"):
                     cmd_path = f"{path}/{word}"
@@ -38,8 +40,10 @@ def main():
                     sys.stdout.write(f"{word} is {cmd_path}" + "\n")
                 else:
                     sys.stdout.write(f"{word}: not found" + "\n")
+
             elif word in valid:
                 sys.stdout.write(f"{word} is a shell builtin" + "\n")
+
             else:
                 sys.stdout.write(f"{word}: not found" + "\n")
 
@@ -47,7 +51,6 @@ def main():
             sys.stdout.write(f"{os.getcwd()}" + "\n")
 
         else:
-            PATH = os.environ.get("PATH")
             exe = command.split()[0]
             check = shutil.which(exe)
 
