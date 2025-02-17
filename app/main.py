@@ -9,6 +9,8 @@ def main():
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
+    working_dir = ""
+
     while True:
 
         PATH = os.environ.get("PATH")
@@ -18,8 +20,6 @@ def main():
         # Wait for user input
         command = input()
         cmds = command.split()
-
-        working_dir = ""
 
         if command == "exit 0":
             break
@@ -52,9 +52,8 @@ def main():
             sys.stdout.write(f"{working_dir}" + "\n")
 
         elif cmds[0] == "cd":
-            print(cmds[1])
+
             if os.path.exists(cmds[1]):
-                print("in here")
                 working_dir = cmds[1]
                 continue
             else:
