@@ -26,6 +26,7 @@ def main():
 
         if cmds[0] == "export":
             PATH = cmds[1][5:]
+            print("here", PATH)
 
         if cmds[0] == "echo":
             sys.stdout.write(command[5:] + "\n")
