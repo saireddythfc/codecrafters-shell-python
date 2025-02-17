@@ -61,8 +61,8 @@ def main():
             else:
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
+        sys.stdout.write("$ ")
         sys.stdout.flush()
-        sys.stdout.write("")
 
 
 if __name__ == "__main__":
