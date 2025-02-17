@@ -29,6 +29,7 @@ def main():
 
         elif cmds[0] == "type":
             PATH = os.getenv("PATH")
+            print(PATH)
             word = command[5:].split()[0]
 
             paths = PATH.split(":")
