@@ -52,7 +52,8 @@ def main():
             sys.stdout.write(f"{working_dir}" + "\n")
 
         elif cmds[0] == "cd":
-            if os.path.isdir(cmds[1]):
+            print(cmds[1])
+            if os.path.exists(cmds[1]):
                 working_dir = cmds[1]
                 continue
             else:
