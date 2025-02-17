@@ -24,14 +24,11 @@ def main():
         if command == "exit 0":
             break
 
-        if cmds[0] == "export":
-            PATH = cmds[1][5:]
-            print("here", PATH)
-
         if cmds[0] == "echo":
             sys.stdout.write(command[5:] + "\n")
 
         elif cmds[0] == "type":
+            PATH = os.getenv("PATH")
             word = command[5:].split()[0]
 
             paths = PATH.split(":")
