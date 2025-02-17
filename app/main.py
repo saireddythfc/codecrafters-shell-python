@@ -54,6 +54,7 @@ def main():
         elif cmds[0] == "cd":
             print(cmds[1])
             if os.path.exists(cmds[1]):
+                print("in here")
                 working_dir = cmds[1]
                 continue
             else:
