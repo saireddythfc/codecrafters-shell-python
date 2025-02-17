@@ -33,7 +33,6 @@ def main():
             word = command[5:].split()[0]
 
             paths = PATH.split(":")
-            cmd_path = None
             for path in paths:
                 if os.path.isfile(f"{path}/{word}"):
                     cmd_path = f"{path}/{word}"
