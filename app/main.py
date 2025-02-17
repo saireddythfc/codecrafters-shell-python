@@ -46,7 +46,7 @@ def main():
                 sys.stdout.write(f"{word}: not found" + "\n")
 
         elif cmds[0] == "pwd":
-            sys.stdout.write(f"{os.getcwd()}")
+            sys.stdout.write(f"{os.getcwd()}" + "\n")
 
         else:
             PATH = os.environ.get("PATH")
