@@ -52,11 +52,9 @@ def main():
                     f"Program was passed {len(args)} args (including program name)."
                     + "\n"
                 )
-                # sys.stdout.write(f"Arg #0 (program name): {args[0]}")
-                # for i in range(len(args[1:])):
-                #     sys.stdout.write(f"Arg #{i} : {args[i]}")
-
-                # os.system(command)
+                sys.stdout.write(f"Arg #0 (program name): {args[0]}" + "\n")
+                for i in range(len(args[1:])):
+                    sys.stdout.write(f"Arg #{i} : {args[i]}" + "\n")
             else:
                 sys.stdout.write(f"{command}: command not found")
 
