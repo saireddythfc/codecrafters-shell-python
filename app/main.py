@@ -9,7 +9,7 @@ def main():
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
-    working_dir = None
+    working_dir = os.getcwd()
 
     while True:
 
@@ -53,15 +53,14 @@ def main():
             if working_dir:
                 sys.stdout.write(f"{working_dir}" + "\n")
             else:
-                sys.stdout.write(f"{os.getcwd()}" + "\n")
+                sys.stdout.write(f"{working_dir}" + "\n")
 
         elif cmds[0] == "cd":
 
-            if os.path.exists(cmds[1]):
-                working_dir = cmds[1]
-                continue
-            else:
-                working_dir = None
+            try:
+                os.chdir(" ".join(cmds[1:]))
+            except FileNotFoundError:
+                working_dir = os.getcwd()
                 sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
 
         else:
