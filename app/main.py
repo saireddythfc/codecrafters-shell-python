@@ -14,6 +14,7 @@ def main():
     # dir_path = path[idx + 1 :] + "/"
 
     while True:
+        time.sleep(5)
         PATH = os.environ.get("PATH")
         sys.stdout.write("$ ")
         sys.stdout.flush()
