@@ -28,6 +28,7 @@ def main():
             sys.stdout.write(command[5:] + "\n")
 
         elif command[:5] == "type ":
+            PATH = os.environ.get("PATH")
             word = command[5:].split()[0]
 
             paths = PATH.split(":")
