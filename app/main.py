@@ -74,6 +74,7 @@ def main():
             else:
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
+        PATH = ""
         sys.stdout.flush()
 
 
