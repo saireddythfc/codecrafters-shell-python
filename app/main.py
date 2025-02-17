@@ -45,7 +45,7 @@ def main():
                 sys.stdout.write(f"{word}: not found" + "\n")
 
         else:
-            # sys.stdout.write(f"{command}: command not found" + "\n")
+            PATH = os.environ.get("PATH")
             exe = command.split()[0]
             check = shutil.which(exe)
 
