@@ -7,13 +7,12 @@ def main():
 
     valid = ["exit", "echo", "type", "pwd", "cd"]
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
-    PATH = os.environ.get("PATH")
 
     working_dir = os.getcwd()
 
     while True:
 
-        # PATH = os.environ.get("PATH")
+        PATH = os.environ.get("PATH")
         sys.stdout.write("$ ")
         sys.stdout.flush()
 
@@ -33,7 +32,7 @@ def main():
 
             paths = PATH.split(":")
             for path in paths:
-                if os.path.isfile(f"{path}/{word}"):
+                if os.path.exists(f"{path}/{word}"):
                     cmd_path = f"{path}/{word}"
 
             if word in type_valid:
@@ -69,12 +68,10 @@ def main():
             check = shutil.which(exe)
 
             if check and os.access(check, os.X_OK):
-
                 os.system(command)
             else:
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
-        # PATH = ""
         sys.stdout.flush()
 
 
