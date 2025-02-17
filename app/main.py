@@ -5,7 +5,7 @@ import shutil
 
 def main():
 
-    valid = ["exit", "echo", "type", "pwd"]
+    valid = ["exit", "echo", "type", "pwd", "cd"]
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
@@ -49,6 +49,12 @@ def main():
 
         elif cmds[0] == "pwd":
             sys.stdout.write(f"{os.getcwd()}" + "\n")
+
+        elif cmds[0] == "cd":
+            if os.path.exists(cmds[1]):
+                continue
+            else:
+                sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
 
         else:
             exe = command.split()[0]
