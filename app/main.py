@@ -49,7 +49,7 @@ def main():
             if check and os.access(check, os.X_OK):
                 args = command.split()
                 sys.stdout.write(
-                    f"Program was passed {len(command)} args (including program name)."
+                    f"Program was passed {len(args)} args (including program name)."
                 )
                 # sys.stdout.write(f"Arg #0 (program name): {args[0]}")
                 # for i in range(len(args[1:])):
