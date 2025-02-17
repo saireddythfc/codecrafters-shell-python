@@ -5,16 +5,12 @@ import time
 
 
 def main():
-    # Uncomment this block to pass the first stage
+
     valid = ["exit", "echo", "type", "pwd"]
     type_valid = ["ls", "cat", "cp", "mkdir", "my_exe"]
     PATH = os.environ.get("PATH")
 
-    # idx = path.find(":")
-    # dir_path = path[idx + 1 :] + "/"
-
     while True:
-        # time.sleep(5)
         PATH = os.environ.get("PATH")
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -61,7 +57,6 @@ def main():
             else:
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
-        sys.stdout.write("$ ")
         sys.stdout.flush()
 
 
