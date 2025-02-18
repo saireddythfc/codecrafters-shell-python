@@ -1,6 +1,7 @@
 import sys
 import os
 import shutil
+from pathlib import Path
 
 
 def main():
@@ -59,8 +60,15 @@ def main():
         elif cmds[0] == "cd":
 
             try:
-                os.chdir(" ".join(cmds[1:]))
-                working_dir = cmds[1]
+                dirs = cmds[1].split("/")
+                if "." in dirs[0]:
+                    current_directory = Path(working_dir)
+                    relative_path = Path(cmds[1])
+                    absolute_path = (current_directory / relative_path).resolve()
+                    working_dir = str(absolute_path)
+                else:
+                    os.chdir(" ".join(cmds[1:]))
+                    working_dir = cmds[1]
             except FileNotFoundError:
                 working_dir = os.getcwd()
                 sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
