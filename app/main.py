@@ -48,7 +48,7 @@ def main():
                 f.close()
 
             else:
-                if "2>" in args:
+                if "2>" in args or "2>>" in args:
                     output = args[0]
                     op_file_path = args[-1]
                     f = open(op_file_path, "w")
