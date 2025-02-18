@@ -47,7 +47,15 @@ def main():
                 f.close()
 
             else:
-                output = " ".join(args)
+                if "2>" in args:
+                    output = args[0]
+                    op_file_path = args[-1]
+                    f = open(op_file_path, "w")
+                    f.write("")
+                    f.close()
+
+                else:
+                    output = " ".join(args)
                 sys.stdout.write(f"{output}" + "\n")
 
         elif cmd == "type":
@@ -120,6 +128,8 @@ def main():
                 sys.stdout.write(f"{command}: command not found" + "\n")
 
         sys.stdout.flush()
+
+    sys.stdout.close()
 
 
 if __name__ == "__main__":
