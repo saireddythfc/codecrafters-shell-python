@@ -89,6 +89,11 @@ def main():
                     working_dir = os.getcwd()
                     sys.stdout.write(f"cd: {cmds[1]}: No such file or directory" + "\n")
 
+        elif "exe " in cmd:
+            file = open(args[0], "r")
+            sys.stdout.write(f"{file.read()}")
+            file.close()
+
         else:
             exe = command.split()[0]
             check = shutil.which(exe)
