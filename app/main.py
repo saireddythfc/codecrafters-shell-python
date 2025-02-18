@@ -32,15 +32,16 @@ def main():
 
         if cmd == "echo":
 
-            if "1>" in args or ">" in args:
+            if "1>>" in args or ">>" in args:
                 op_file_path = args[-1]
-                if "1>" in args:
-                    output = args[0]
-                else:
-                    in_file_path = args[0]
-                    file = open(in_file_path, "r")
-                    output = file.read()
-                    file.close()
+                output = args[0]
+                f = open(op_file_path, "a")
+                f.write(output + "\n")
+                f.close()
+
+            elif "1>" in args or ">" in args:
+                op_file_path = args[-1]
+                output = args[0]
 
                 f = open(op_file_path, "w")
                 f.write(output + "\n")
