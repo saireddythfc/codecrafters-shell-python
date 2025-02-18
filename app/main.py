@@ -2,6 +2,7 @@ import sys
 import os
 import shutil
 from pathlib import Path
+import shlex
 
 
 def main():
@@ -23,13 +24,17 @@ def main():
         command = input()
         cmds = command.split()
 
+        args = shlex.split(command)
+        cmd, args = args[0], args[1:]
+
         if command == "exit 0":
             break
 
-        if cmds[0] == "echo":
-            sys.stdout.write(command[5:] + "\n")
+        if cmd == "echo":
+            output = " ".join(args)
+            sys.stdout.write(f"{output}" + "\n")
 
-        elif cmds[0] == "type":
+        elif cmd == "type":
             PATH = os.getenv("PATH")
             word = command[5:].split()[0]
 
@@ -51,14 +56,14 @@ def main():
             else:
                 sys.stdout.write(f"{word}: not found" + "\n")
 
-        elif cmds[0] == "pwd":
+        elif cmd == "pwd":
 
             if working_dir:
                 sys.stdout.write(f"{working_dir}" + "\n")
             else:
                 sys.stdout.write(f"{working_dir}" + "\n")
 
-        elif cmds[0] == "cd":
+        elif cmd == "cd":
 
             if cmds[1] == "~":
                 HOME = os.getenv("HOME")
