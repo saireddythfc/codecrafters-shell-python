@@ -6,9 +6,42 @@ import shlex
 import readline
 
 
+def find_executables(paths=None):
+    """Finds all executable files in the specified paths (or PATH if None)."""
+
+    if paths is None:
+        paths = os.environ["PATH"].split(os.pathsep)  # Use the system's PATH
+
+    executables = set()  # Use a set to avoid duplicates
+
+    for path in paths:
+        if os.path.isdir(path):  # Check if it's a directory
+            for filename in os.listdir(path):
+                filepath = os.path.join(path, filename)
+
+                if os.path.isfile(filepath) and os.access(
+                    filepath, os.X_OK
+                ):  # Check if it's a file and executable
+                    executables.add(filename)
+                # Check for executables without extension on some systems
+                elif (
+                    os.path.isfile(filepath)
+                    and not os.path.splitext(filename)[1]
+                    and os.access(filepath, os.X_OK)
+                ):
+                    executables.add(filename)
+
+    return sorted(list(executables))  # Return sorted list for consistent order
+
+
 def completer(text, state):
-    commands = ["echo ", "exit "]
+    execs = find_executables()
+    commands = ["exit ", "echo ", "type ", "pwd ", "cd "]
     matches = [cmd for cmd in commands if cmd.startswith(text)]
+
+    if state >= len(matches):
+        exes = [exe for exe in execs if exe.startswith(text)]
+        return exes[state] + " " if state < len(exes) else None
 
     return matches[state] if state < len(matches) else None
 
