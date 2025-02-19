@@ -34,6 +34,17 @@ def find_executables(paths=None):
     return sorted(list(executables))  # Return sorted list for consistent order
 
 
+def display_matches(substitution, matches):
+    try:
+        sys.stdout.write("\n")
+        sys.stdout.write(" ".join(matches) + "\n")
+        sys.stdout.write(f"$ {substitution}")
+        sys.stdout.flush()
+        readline.redisplay()
+    except Exception as e:
+        sys.stderr.write(f"{e}")
+
+
 def completer(text, state):
     execs = find_executables()
     commands = ["exit ", "echo ", "type ", "pwd ", "cd "]
@@ -55,6 +66,9 @@ def main():
 
     working_dir = os.getcwd()
 
+    readline.set_completion_display_matches_hook(display_matches)
+    readline.parse_and_bind("set bell-style audible")
+    readline.set_auto_history(True)
     readline.set_completer(completer)
     readline.parse_and_bind("tab: complete")
 
