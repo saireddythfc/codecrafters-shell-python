@@ -3,6 +3,14 @@ import os
 import shutil
 from pathlib import Path
 import shlex
+import readline
+
+
+def completer(text, state):
+    commands = ["echo ", "exit "]
+    matches = [cmd for cmd in commands if cmd.startswith(text)]
+
+    return matches[state] if state < len(matches) else None
 
 
 def main():
@@ -13,6 +21,9 @@ def main():
     HOME = os.getenv("HOME")
 
     working_dir = os.getcwd()
+
+    readline.set_completer(completer)
+    readline.parse_and_bind("tab: complete")
 
     while True:
 
