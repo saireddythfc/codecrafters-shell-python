@@ -34,13 +34,13 @@ def find_executables(paths=None):
     return sorted(list(executables))  # Return sorted list for consistent order
 
 
-def display_matches(substitution, matches):
+def display_matches(substitution, matches, longest_match_length):
     try:
         sys.stdout.write("\n")
         sys.stdout.write(" ".join(matches) + "\n")
         sys.stdout.write(f"$ {substitution}")
         sys.stdout.flush()
-        readline.redisplay()
+        readline.redisplay()  # type: ignore
     except Exception as e:
         sys.stderr.write(f"{e}")
 
